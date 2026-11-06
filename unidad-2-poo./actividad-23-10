@@ -1,0 +1,104 @@
+#Stock inicial: 8
+
+#producto.vender(3): El stock se descuenta correctamente. Quedan 5 unidades.
+
+#producto.vender(10): Como 10 es mayor que el stock actual (5), se muestra el mensaje de stock insuficiente y el stock no cambia. Quedan 5 unidades.
+
+#producto.set_stock(-5): Como el valor es negativo, el setter lo rechaza y muestra stock inválido. El stock no cambia. Quedan 5 unidades.
+
+#Por qué la segunda reposición no debería modificar el stock?
+#Porque el valor -2 no cumple con la condicion de ser mayor a cero, por lo que el programa ingresa al sector else, muestra el mensaje de error y no hace la suma
+
+
+
+
+
+
+
+
+class Producto:
+    def __init__(self, nombre, tipo, precio, stock):
+        self.nombre = nombre
+        self.tipo = tipo
+        self.precio = precio
+        self.__stock = 0
+        self.set_stock(stock)
+
+    def get_stock(self):
+        return self.__stock
+
+    def set_stock(self, nuevo_stock):
+        if nuevo_stock >= 0:
+            self.__stock = nuevo_stock
+        else:
+            print("Stock inválido")
+
+    def mostrar_datos(self):
+        print(self.nombre, self.tipo, self.precio, "Stock:", self.__stock)
+
+    def vender(self, cantidad):
+        if cantidad <= 0:
+            print("Cantidad inválida")
+        elif cantidad <= self.__stock:
+            self.__stock -= cantidad
+            print("Venta realizada")
+        else:
+            print("Stock insuficiente")
+
+    def reponer(self, cantidad):
+        if cantidad > 0:
+            self.__stock = self.__stock + cantidad
+            print("Reposición realizada")
+        else:
+            print("Cantidad inválida")
+
+
+class Alimento(Producto):
+    def __init__(self, nombre, precio, stock, vencimiento):
+        super().__init__(nombre, "Alimento", precio, stock)
+        self.vencimiento = vencimiento
+
+    def mostrar_vencimiento(self):
+        print("Vence:", self.vencimiento)
+
+
+class Electronico(Producto):
+    def __init__(self, nombre, precio, stock, garantia_meses):
+        super().__init__(nombre, "Electrónico", precio, stock)
+        self.garantia_meses = garantia_meses
+
+    def mostrar_garantia(self):
+        print("Garantía:", self.garantia_meses, "meses")
+
+
+#PARTE 1
+producto = Producto("Arroz", "Alimento", 2000, 8)
+
+producto.vender(3)
+print("Stock actual:", producto.get_stock())
+
+producto.vender(10)
+print("Stock actual:", producto.get_stock())
+
+producto.set_stock(-5)
+print("Stock actual:", producto.get_stock())
+
+
+#PARTE 2
+producto.reponer(5)
+print("Stock actual:", producto.get_stock())
+
+producto.reponer(-2)
+print("Stock actual:", producto.get_stock())
+
+
+#PARTE 3
+leche = Alimento("Leche", 1500, 10, "30/10/2026")
+leche.mostrar_datos()
+leche.mostrar_vencimiento()
+leche.vender(2)
+leche.reponer(4)
+
+print("Stock final de la leche:", leche.get_stock())
+
+
