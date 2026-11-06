@@ -38,7 +38,7 @@ class Producto:
 
     def vender(self, cantidad):
         if cantidad <= 0:
-            print("Cantidad inválida")
+            print("Cantidad invalida")
         elif cantidad <= self.__stock:
             self.__stock -= cantidad
             print("Venta realizada")
@@ -50,7 +50,7 @@ class Producto:
             self.__stock = self.__stock + cantidad
             print("Reposición realizada")
         else:
-            print("Cantidad inválida")
+            print("Cantidad invalida")
 
 
 class Alimento(Producto):
@@ -64,7 +64,7 @@ class Alimento(Producto):
 
 class Electronico(Producto):
     def __init__(self, nombre, precio, stock, garantia_meses):
-        super().__init__(nombre, "Electrónico", precio, stock)
+        super().__init__(nombre, "Electronico", precio, stock)
         self.garantia_meses = garantia_meses
 
     def mostrar_garantia(self):
