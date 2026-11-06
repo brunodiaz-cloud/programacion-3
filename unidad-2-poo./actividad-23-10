@@ -1,10 +1,10 @@
 #Stock inicial: 8
 
-#producto.vender(3): El stock se descuenta correctamente. Quedan 5 unidades.
+#producto.vender(3): El stock se descuenta correctamente. Quedan 5 unidades
 
-#producto.vender(10): Como 10 es mayor que el stock actual (5), se muestra el mensaje de stock insuficiente y el stock no cambia. Quedan 5 unidades.
+#producto.vender(10): Como 10 es mayor que el stock actual (5), se muestra el mensaje de stock insuficiente y el stock no cambia dejando las 5 unidadse
 
-#producto.set_stock(-5): Como el valor es negativo, el setter lo rechaza y muestra stock inválido. El stock no cambia. Quedan 5 unidades.
+#producto.set_stock(-5): Como el valor es negativo, el setter lo rechaza y muestra stock inválido entonces el stock queda igual
 
 #Por qué la segunda reposición no debería modificar el stock?
 #Porque el valor -2 no cumple con la condicion de ser mayor a cero, por lo que el programa ingresa al sector else, muestra el mensaje de error y no hace la suma
